@@ -57,7 +57,9 @@ const CartDropdown = () => {
                         </div>
                         <div className="flex flex-col justify-between flex-1">
                           <div className="flex flex-col flex-1">
-                            <div className="flex items-start justify-between">
+                            <div className="flex items-start justify-between mb-2">
+                              {" "}
+                              {/* Adjusted margin */}
                               <div>
                                 <h3 className="text-base-regular overflow-ellipsis overflow-hidden whitespace-nowrap mr-4 w-[130px]">
                                   <Link
@@ -67,6 +69,14 @@ const CartDropdown = () => {
                                     {item.title}
                                   </Link>
                                 </h3>
+
+                                {/* Añadiendo texto a personalizar si existe */}
+                                {item.metadata?.customText && (
+                                  <span className="text-sm italic block overflow-hidden whitespace-nowrap overflow-ellipsis w-[130px]">
+                                    {item.metadata.customText}
+                                  </span>
+                                )}
+
                                 <LineItemOptions variant={item.variant} />
                                 <span>Quantity: {item.quantity}</span>
                               </div>

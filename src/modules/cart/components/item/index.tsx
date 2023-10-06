@@ -14,7 +14,7 @@ type ItemProps = {
 const Item = ({ item, region }: ItemProps) => {
   const { updateItem, deleteItem } = useStore()
 
-  const customText = item.metadata?.customText ?? '';
+  const customText = item.metadata?.customText ?? ""
 
   return (
     <div className="grid grid-cols-[122px_1fr] gap-x-4">
@@ -22,15 +22,18 @@ const Item = ({ item, region }: ItemProps) => {
         <Thumbnail thumbnail={item.thumbnail} size="full" />
       </div>
       <div className="text-base-regular flex flex-col gap-y-8">
-        
         <div className="flex items-start justify-between">
-        <div className="flex flex-col">
+          <div className="flex flex-col">
             <span>{item.title}</span>
             {/* Display customText if it is available */}
-            {customText && <span className="text-sm italic">{customText}</span>}
+            {customText && (
+              <span className="text-sm italic">
+                Texto a personalizar: {customText}
+              </span>
+            )}
             <LineItemOptions variant={item.variant} />
           </div>
-          
+
           <NativeSelect
             value={item.quantity}
             onChange={(value) =>

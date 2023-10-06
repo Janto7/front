@@ -19,6 +19,8 @@ const Items = ({ items, region, cartId }: ItemsProps) => {
     <div className="p-10 border-b border-gray-200 gap-y-4 flex flex-col">
       {enrichedItems?.length
         ? enrichedItems.map((item) => {
+            // Extract customText if it's available
+            const customText = item.metadata?.customText ?? ""
             return (
               <div className="grid grid-cols-[122px_1fr] gap-x-4" key={item.id}>
                 <div className="w-[122px]">
@@ -35,6 +37,12 @@ const Items = ({ items, region, cartId }: ItemsProps) => {
                             {item.title}
                           </Link>
                         </h3>
+                        {/* Display customText if it is available */}
+                        {customText && (
+                          <span className="text-sm italic">
+                            Texto a personalizar: {customText}
+                          </span>
+                        )}
                         <LineItemOptions variant={item.variant} />
                         <span>Quantity: {item.quantity}</span>
                       </div>

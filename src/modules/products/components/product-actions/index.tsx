@@ -83,12 +83,21 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           <div></div>
         )}
       </div>
-      <input 
-        type="text" 
-        value={customText} 
-        onChange={(e) => updateCustomText(e.target.value)}
-        placeholder="Custom text here"
-      />
+      <div className="mb-4 relative p-2">
+        <input 
+          type="text" 
+          value={customText} 
+          onChange={(e) => updateCustomText(e.target.value)}
+          placeholder=" "
+          className="w-full p-2 border-b-2 border-gray-300 focus:border-indigo-500 bg-transparent text-lg focus:outline-none transition duration-300 ease-in-out"
+        />
+        <label 
+          htmlFor="customText" 
+          className={`absolute left-2 top-2 text-lg text-gray-500 transition-all duration-300 ease-in-out ${customText ? 'transform -translate-y-6 text-indigo-500' : ''}`}
+        >
+          Personalize aquí
+        </label>
+      </div>
       <Button onClick={addToCart}>
         {!inStock ? "Out of stock" : "Add to cart"}
       </Button>
