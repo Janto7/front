@@ -16,11 +16,13 @@ import { useSearchParams } from "next/navigation"
 interface VariantInfoProps {
   variantId: string
   quantity: number
+  customText?: string  // Add this line
 }
 
 interface LineInfoProps {
   lineId: string
   quantity: number
+  
 }
 
 interface StoreContext {
@@ -243,14 +245,13 @@ export const StoreProvider = ({ children }: StoreProps) => {
   const addItem = ({
     variantId,
     quantity,
-  }: {
-    variantId: string
-    quantity: number
-  }) => {
+    customText,
+  }: VariantInfoProps) => {  
     addLineItem.mutate(
       {
         variant_id: variantId,
         quantity: quantity,
+        metadata: { customText },  
       },
       {
         onSuccess: ({ cart }) => {

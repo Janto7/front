@@ -13,7 +13,7 @@ type ProductActionsProps = {
 }
 
 const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
-  const { updateOptions, addToCart, options, inStock, variant } =
+  const { updateOptions, addToCart, options, inStock, variant, customText, updateCustomText } =
     useProductActions()
 
   const price = useProductPrice({ id: product.id!, variantId: variant?.id })
@@ -83,7 +83,12 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           <div></div>
         )}
       </div>
-
+      <input 
+        type="text" 
+        value={customText} 
+        onChange={(e) => updateCustomText(e.target.value)}
+        placeholder="Custom text here"
+      />
       <Button onClick={addToCart}>
         {!inStock ? "Out of stock" : "Add to cart"}
       </Button>

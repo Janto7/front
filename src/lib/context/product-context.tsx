@@ -21,6 +21,8 @@ interface ProductContext {
   disabled: boolean
   inStock: boolean
   variant?: Variant
+  customText: string
+  updateCustomText: (text: string) => void
   maxQuantityMet: boolean
   options: Record<string, string>
   updateOptions: (options: Record<string, string>) => void
@@ -48,6 +50,12 @@ export const ProductProvider = ({
   const { addItem } = useStore()
   const { cart } = useCart()
   const variants = product.variants as unknown as Variant[]
+
+  const [customText, setCustomText] = useState<string>("")
+
+const updateCustomText = (text: string) => {
+  setCustomText(text)
+}
 
   useEffect(() => {
     // initialize the option state
@@ -126,6 +134,7 @@ export const ProductProvider = ({
       addItem({
         variantId: variant.id,
         quantity,
+        customText
       })
     }
   }
@@ -159,6 +168,8 @@ export const ProductProvider = ({
         inStock,
         options,
         variant,
+        customText,
+      updateCustomText,
         addToCart,
         updateOptions,
         decreaseQuantity,
@@ -180,3 +191,4 @@ export const useProductActions = () => {
   }
   return context
 }
+
