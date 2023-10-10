@@ -34,6 +34,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        'myUmbrella': ['MyUmbrellaFont', 'sans-serif']
       },
     },
   },

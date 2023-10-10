@@ -36,7 +36,7 @@ const Nav = () => {
           </div>
 
           <div className="flex items-center h-full">
-            <Link href="/" className="text-xl-semi uppercase">
+          <Link href="/" className="text-xl-semi uppercase font-myUmbrella">
               My Umbrella
             </Link>
           </div>
