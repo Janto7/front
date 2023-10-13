@@ -71,12 +71,12 @@ const CartDropdown = () => {
                                 </h3>
 
                                 {/* Añadiendo texto a personalizar si existe */}
-                                {item.metadata?.customText && (
+                                {typeof item.metadata?.customText ===
+                                  "string" && (
                                   <span className="text-sm italic block overflow-hidden whitespace-nowrap overflow-ellipsis w-[130px]">
                                     {item.metadata.customText}
                                   </span>
                                 )}
-
                                 <LineItemOptions variant={item.variant} />
                                 <span>Quantity: {item.quantity}</span>
                               </div>
